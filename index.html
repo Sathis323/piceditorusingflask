@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Editor</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Image Editor</h1>
+
+    <form method="POST" action="/" enctype="multipart/form-data">
+        <input type="file" name="image" accept="image/*">
+        <input type="submit" value="Upload and Edit">
+    </form>
+
+    {% if edited_image %}
+    <h2>Edited Image:</h2>
+    <img src="{{ url_for('uploaded_file', filename='edited_' + edited_image.split('/')[-1]) }}" alt="Edited Image">
+    {% endif %}
+</body>
+</html>
